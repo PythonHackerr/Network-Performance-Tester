@@ -1,0 +1,22 @@
+version: "3.0"
+networks:
+  z27_network:
+    external: true
+
+services:
+  server:
+    container_name: z27_server
+    build: ./server
+    networks:
+      - z27_network
+    tty: true
+    cap_add:
+    - NET_ADMIN
+  client:
+    container_name: z27_client
+    build: ./client
+    networks: 
+      - z27_network
+    tty: true
+    cap_add:
+    - NET_ADMIN
